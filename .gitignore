@@ -1,0 +1,8 @@
+# JetBrains IDE config dir
+.idea
+# Yarn module cache
+.yarn
+node_modules
+# Tauri build dir
+dist
+src-tauri/target
