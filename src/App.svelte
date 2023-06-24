@@ -1,35 +1,71 @@
 <script lang="ts">
-  import Greet from "./lib/Greet.svelte";
+  import CCPD from "./data";
+
+  const colorData = CCPD.Chinese;
+
+  let bg = colorData[0].hex;
+
+  function selectColor(color) {
+    bg = color.hex;
+    // 复制到剪切板
+    navigator.clipboard.writeText(color.hex);
+  }
 </script>
 
-<main class="container">
-  <h1>Welcome to Tauri!</h1>
+<main class="app" style="background: {bg};">
+  <div class="container">
+    {#each colorData as color}
+      <div class="top-line" style="background: {color.hex}" on:click={()=>selectColor(color)}>
 
-  <div class="row">
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo vite" alt="Vite Logo" />
-    </a>
-    <a href="https://tauri.app" target="_blank">
-      <img src="/tauri.svg" class="logo tauri" alt="Tauri Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank">
-      <img src="/svelte.svg" class="logo svelte" alt="Svelte Logo" />
-    </a>
+      </div>
+    {/each}
   </div>
-
-  <p>Click on the Tauri, Vite, and Svelte logos to learn more.</p>
-
-  <div class="row">
-    <Greet />
+  <div class="title">
+    <h1>{bg}</h1>
+    <img src="../src/assets/icon/icon.png" alt="icon" />
+    <h1>Chinese Color Palette</h1>
   </div>
 </main>
 
 <style>
-  .logo.vite:hover {
-    filter: drop-shadow(0 0 2em #747bff);
-  }
+.app {
+    display: flex;
+}
 
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00);
-  }
+.title {
+    display: flex;
+    width: 10%;
+    background: rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title img {
+    width: 100%;
+}
+
+.title h1 {
+    writing-mode: vertical-rl;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+    padding: 0;
+    margin: 10px 0 0 10px;
+}
+
+.container {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.top-line {
+    width: 50px;
+    height: 10px;
+}
 </style>

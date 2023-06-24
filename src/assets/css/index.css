@@ -1,0 +1,10 @@
+/*
+ * @file assets css index.css
+ * @description CSS 样式文件
+ * @since 1.0.0
+ */
+
+/* reset */
+body {
+  margin: 0;
+}
