@@ -3,8 +3,10 @@ env:
   es2021: true
 extends:
   - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
-  - plugin:svelte/recommended
+  - plugin:svelte/prettier
+  - plugin:prettier/recommended
 parser: "@typescript-eslint/parser"
 globals:
   CCP: readonly
@@ -14,18 +16,32 @@ parserOptions:
 overrides:
   - files: ["*.svelte"]
     parser: "svelte-eslint-parser"
+    parserOptions:
+      parser: "@typescript-eslint/parser"
 plugins:
   - "@typescript-eslint"
+  - svelte
+  - prettier
 rules:
+  # 间距：2
   indent:
     - error
     - 2
+  # 换行符：CRLF
   linebreak-style:
     - error
     - windows
+  # 引号：双引号
   quotes:
     - error
     - double
+  # 分号
   semi:
     - error
     - always
+  # 禁止多余的分号
+  no-extra-semi: error
+  # 等号前后的空格
+  space-infix-ops: error
+  # 空格在函数名和括号之间
+  space-before-function-paren: 0
