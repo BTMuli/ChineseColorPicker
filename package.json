@@ -10,7 +10,9 @@
     "vite:build": "vite build",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "tauri": "tauri",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "lint:check": "eslint --ext .js,.ts,.svelte .",
+    "lint:fix": "eslint --ext .js,.ts,.svelte . --fix"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.4.0"
@@ -20,6 +22,10 @@
     "@tauri-apps/cli": "^1.4.0",
     "@tsconfig/svelte": "^3.0.0",
     "@types/node": "^18.7.10",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "^8.43.0",
+    "eslint-plugin-svelte": "^2.31.0",
     "prettier": "^2.8.8",
     "svelte": "^3.54.0",
     "svelte-check": "^3.0.0",
