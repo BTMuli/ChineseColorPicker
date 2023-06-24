@@ -1,11 +1,14 @@
 <script lang="ts">
+  // data
   import CCPD from "./data";
+  // components
+  import ChineseColorItem from "./components/ChineseColorItem.svelte";
 
-  const colorData = CCPD.Chinese;
+  const colorData: CCP.ChineseColor.Item[] = CCPD.Chinese;
 
-  let bg = colorData[0].hex;
+  let bg: string = colorData[0].hex;
 
-  function selectColor(color) {
+  function selectColor(color: CCP.ChineseColor.Item) {
     bg = color.hex;
     // 复制到剪切板
     navigator.clipboard.writeText(color.hex);
@@ -15,9 +18,7 @@
 <main class="app" style="background: {bg};">
   <div class="container">
     {#each colorData as color}
-      <div class="top-line" style="background: {color.hex}" on:click={()=>selectColor(color)}>
-
-      </div>
+      <ChineseColorItem colorItem="{color}" transferColor="{selectColor}" />
     {/each}
   </div>
   <div class="title">
@@ -28,44 +29,43 @@
 </main>
 
 <style>
-.app {
+  .app {
     display: flex;
-}
+    max-height: 100vh;
+    overflow-y: auto;
+  }
 
-.title {
+  .title {
     display: flex;
     width: 10%;
     background: rgba(0, 0, 0, 0.5);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+  }
 
-.title img {
+  .title img {
     width: 100%;
-}
+  }
 
-.title h1 {
+  .title h1 {
     writing-mode: vertical-rl;
     font-size: 20px;
     color: #fff;
     text-shadow: 0 0 10px #000;
     padding: 0;
     margin: 10px 0 0 10px;
-}
+  }
 
-.container {
+  .container {
     width: 90%;
+    max-height: 100%;
+    overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
     padding: 10px;
     gap: 10px;
-}
-
-.top-line {
-    width: 50px;
-    height: 10px;
-}
+  }
 </style>

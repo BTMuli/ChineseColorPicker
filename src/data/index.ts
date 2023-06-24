@@ -7,7 +7,7 @@
 import ChineseColor from "./chinese-color.json";
 
 const CCPD = {
-  Chinese: ChineseColor as CCP.ChineseColor.Item[],
+  Chinese: ChineseColor as CCP.ChineseColor.Item[]
 };
 
 export default CCPD;
