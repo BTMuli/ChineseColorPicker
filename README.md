@@ -18,7 +18,7 @@ A color picker for Zhongguose(中国色).
 - [Vite](https://vitejs.dev/)
 - [Svelte](https://svelte.dev/)
 - [Tauri](https://tauri.app/)
-- [Yarn](https://yarnpkg.com/)
+- [Yarn Berry](https://yarnpkg.com/)
 
 ## 数据来源
 
