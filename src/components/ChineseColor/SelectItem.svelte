@@ -33,7 +33,7 @@
       class="color-sign"
       on:click|stopPropagation="{() => (showAbout = true)}"
     >
-      <img src="/src/assets/icon/icon.png" alt="icon" />
+      <img src="sakura.svg" alt="icon" />
       <span>Chinese Color Picker</span>
     </div>
   </div>
