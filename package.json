@@ -12,9 +12,10 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "tauri": "tauri",
     "prettier": "prettier --write .",
-    "lint:check": "eslint --ext .js,.ts,.svelte .",
-    "lint:fix": "eslint --ext .js,.ts,.svelte . --fix"
+    "lint:check": "eslint --ext .ts,.svelte .",
+    "lint:fix": "eslint --ext .ts,.svelte . --fix"
   },
+  "packageManager": "yarn@3.6.0",
   "dependencies": {
     "@tauri-apps/api": "^1.4.0"
   },
