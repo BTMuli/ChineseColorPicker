@@ -12,11 +12,7 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false,
-      "shell": {
-        "all": false,
-        "open": true
-      }
+      "all": false
     },
     "bundle": {
       "active": true,
@@ -37,7 +33,7 @@
         "fullscreen": false,
         "resizable": true,
         "title": "ChineseColorPicker",
-        "width": 800,
+        "width": 980,
         "height": 600
       }
     ]

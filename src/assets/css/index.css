@@ -4,7 +4,27 @@
  * @since 1.0.0
  */
 
+/* font */
+@import "../fonts/index.css";
+
+:root {
+  --font-title: "Genshin", "JetBrians mono Bold", serif;
+  --font-text: "Genshin-Light", "JetBrians mono", sans-serif;
+}
+
 /* reset */
 body {
   margin: 0;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #fcfcfc;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #c0c0c0;
 }

@@ -2,70 +2,75 @@
   // data
   import CCPD from "./data";
   // components
-  import ChineseColorItem from "./components/ChineseColorItem.svelte";
+  import GridItem from "./components/ChineseColor/GridItem.svelte";
+  import SelectItem from "./components/ChineseColor/SelectItem.svelte";
 
-  const colorData: CCP.ChineseColor.Item[] = CCPD.Chinese;
+  let colorData: CCP.ChineseColor.Item[] = CCPD.Chinese;
+  // 取后面22个
+  const lastColors = CCPD.Chinese.slice(-7);
+  // 剩余的
+  colorData = colorData.slice(0, -7);
 
-  let bg: string = colorData[0].hex;
+  let selectedColor: CCP.ChineseColor.Item = {
+    CMYK: [0, 0, 0, 0],
+    RGB: [0, 0, 0],
+    hex: "#d6d6d6",
+    name: "中国色",
+    pinyin: "zhong guo se"
+  };
+
+  let isCopy = false;
 
   function selectColor(color: CCP.ChineseColor.Item) {
-    bg = color.hex;
+    selectedColor = color;
     // 复制到剪切板
     navigator.clipboard.writeText(color.hex);
+    isCopy = true;
+    setTimeout(() => {
+      isCopy = false;
+    }, 1000);
   }
 </script>
 
-<main class="app" style="background: {bg};">
+<main class="app" style="background: {selectedColor.hex};">
   <div class="container">
     {#each colorData as color}
-      <ChineseColorItem colorItem="{color}" transferColor="{selectColor}" />
+      <GridItem colorItem="{color}" transferColor="{selectColor}" />
     {/each}
   </div>
-  <div class="title">
-    <h1>{bg}</h1>
-    <img src="../src/assets/icon/icon.png" alt="icon" />
-    <h1>Chinese Color Palette</h1>
+  <div class="container">
+    {#each lastColors as color}
+      <GridItem colorItem="{color}" transferColor="{selectColor}" />
+    {/each}
+  </div>
+  <div class="selected">
+    <SelectItem colorItem="{selectedColor}" showCopy="{isCopy}" />
   </div>
 </main>
 
 <style>
   .app {
-    display: flex;
     max-height: 100vh;
     overflow-y: auto;
-  }
-
-  .title {
-    display: flex;
-    width: 10%;
-    background: rgba(0, 0, 0, 0.5);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .title img {
-    width: 100%;
-  }
-
-  .title h1 {
-    writing-mode: vertical-rl;
-    font-size: 20px;
-    color: #fff;
-    text-shadow: 0 0 10px #000;
-    padding: 0;
-    margin: 10px 0 0 10px;
+    transition: background 0.5s ease-in-out;
   }
 
   .container {
-    width: 90%;
-    max-height: 100%;
-    overflow-y: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-gap: 10px;
+    margin: 10px auto;
+    width: calc(100% - 20px);
+  }
+
+  .selected {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    width: 530px;
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+    background: rgb(255 255 255/ 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   }
 </style>

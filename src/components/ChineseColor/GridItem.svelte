@@ -1,6 +1,7 @@
 <script lang="ts">
   export let colorItem: CCP.ChineseColor.Item;
 
+  // eslint-disable-next-line
   export let transferColor = (color: CCP.ChineseColor.Item) => {};
 
   function selectColor() {
@@ -10,13 +11,15 @@
 
 <div
   class="top-line"
-  style="background: {colorItem.hex}"
+  style="
+  background: {colorItem.hex};"
   on:click="{() => selectColor()}"
 ></div>
 
 <style>
   .top-line {
     width: 50px;
-    height: 10px;
+    height: 50px;
+    margin: 0 auto;
   }
 </style>
