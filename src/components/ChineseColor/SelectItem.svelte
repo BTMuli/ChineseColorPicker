@@ -1,9 +1,24 @@
 <script lang="ts">
+  // tauri
+  import { WebviewWindow } from "@tauri-apps/api/window";
+
   export let colorItem: CCP.ChineseColor.Item;
 
   export let showCopy = false;
 
-  export let showAbout = false;
+  function toAbout() {
+    const url = "https://github.com/BTMuli/ChineseColorPicker";
+    const webview = new WebviewWindow("about", {
+      url: url,
+      title: "Chinese Color Picker",
+      width: 800,
+      height: 600
+    });
+    webview.once("tauri://created", function () {});
+    webview.once("tauri://error", function (e) {
+      console.error(e);
+    });
+  }
 
   function copyColor() {
     showCopy = true;
@@ -29,10 +44,7 @@
       Hex：{colorItem.hex}
     </div>
     <!-- 避免点击传递到父元素 -->
-    <div
-      class="color-sign"
-      on:click|stopPropagation="{() => (showAbout = true)}"
-    >
+    <div class="color-sign" on:click|stopPropagation="{toAbout}">
       <img src="sakura.svg" alt="icon" />
       <span>Chinese Color Picker</span>
     </div>
