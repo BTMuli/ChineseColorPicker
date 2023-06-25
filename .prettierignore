@@ -1,3 +1,5 @@
 # Build
 dist
 src-tauri/target/
+# Yarn
+.yarn

@@ -7,9 +7,8 @@ bracketSpacing: true
 endOfLine: "crlf"
 tabWidth: 2
 trailingComma: "none"
-svelteSortOrder : "options-scripts-markup-styles"
+svelteSortOrder: "options-scripts-markup-styles"
 svelteStrictMode: true
-svelteBracketNewLine: true
 svelteAllowShorthand: false
 svelteIndentScriptAndStyle: true
 overrides:
