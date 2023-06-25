@@ -22,13 +22,15 @@
   let isCopy = false;
 
   function selectColor(color: CCP.ChineseColor.Item) {
+    if (selectedColor === color) {
+      // 复制到剪切板
+      navigator.clipboard.writeText(color.hex);
+      isCopy = true;
+      setTimeout(() => {
+        isCopy = false;
+      }, 1000);
+    }
     selectedColor = color;
-    // 复制到剪切板
-    navigator.clipboard.writeText(color.hex);
-    isCopy = true;
-    setTimeout(() => {
-      isCopy = false;
-    }, 1000);
   }
 </script>
 
