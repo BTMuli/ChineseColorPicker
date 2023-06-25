@@ -1,6 +1,6 @@
 [package]
 name = "chinese_color_picker"
-version = "0.0.0"
+version = "1.0.0"
 description = "A color picker for Zhongguose(中国色)."
 authors = ["BTMuli <bt-muli@outlook.com>"]
 license = "MIT"
